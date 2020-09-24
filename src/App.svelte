@@ -91,6 +91,7 @@
 		class="new-todo"
 		on:keydown={createNew}
 		placeholder="What needs to be done?"
+		autofocus
 	>
 </header>
 
@@ -104,6 +105,7 @@
 				<li class="{item.completed ? 'completed' : ''} {editing === index ? 'editing' : ''}">
 					<div class="view">
 						<input class="toggle" type="checkbox" bind:checked={item.completed}>
+						<label on:dblclick="{() => editing = index}">{item.description}</label>
 						<button on:click="{() => remove(index)}" class="destroy"></button>
 					</div>
 
@@ -114,6 +116,7 @@
 							class="edit"
 							on:keydown={handleEdit}
 							on:blur={submit}
+							autofocus
 						>
 					{/if}
 				</li>
@@ -139,8 +142,3 @@
 		</footer>
 	</section>
 {/if}
-
-
-<style>
-	
-</style>
